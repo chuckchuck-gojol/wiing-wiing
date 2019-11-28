@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_check_connection"
-        android:name="com.jyami.wiingwiing_black.ui.home.HomeFragment"
+        android:name="com.jyami.wiingwiing_black.ui.checking_connection.CheckingConnectionFragment"
         android:label="@string/menu_check_connection"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_check_connection" />
 
     <fragment
         android:id="@+id/nav_optimize_memory"
-        android:name="com.jyami.wiingwiing_black.ui.gallery.GalleryFragment"
+        android:name="com.jyami.wiingwiing_black.ui.optimizing_memory.OptimizingMemoryFragment"
         android:label="@string/menu_optimize_memory"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_optimize_memory" />
 
     <fragment
         android:id="@+id/nav_help"
-        android:name="com.jyami.wiingwiing_black.ui.slideshow.SlideshowFragment"
+        android:name="com.jyami.wiingwiing_black.ui.help.HelpFragment"
         android:label="@string/menu_help"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_help" />
 
     <fragment
         android:id="@+id/nav_about_us"
-        android:name="com.jyami.wiingwiing_black.ui.tools.ToolsFragment"
+        android:name="com.jyami.wiingwiing_black.ui.about_us.AboutUsFragment"
         android:label="@string/menu_about_us"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_about_us" />
 </navigation>

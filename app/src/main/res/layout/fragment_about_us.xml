@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBlack">
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/subBlack"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_jh"
+            android:layout_width="103dp"
+            android:layout_height="135dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/profile_jh"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/profile_jh_text"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="@string/profile_jh_text"
+            android:textColor="@color/textWhite"
+            android:textSize="16sp"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/subBlack"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:id="@+id/profile_mj_text"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:text="@string/profile_mj"
+            android:textColor="@color/textWhite"
+            android:textSize="16sp"
+            tools:ignore="RtlHardcoded" />
+
+        <ImageView
+            android:id="@+id/profile_mj"
+            android:layout_width="103dp"
+            android:layout_height="135dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/profile_mj"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/subBlack"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+        <ImageView
+            android:id="@+id/profile_tg"
+            android:layout_width="103dp"
+            android:layout_height="135dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/profile_tg"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/profile_tg_text"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="@string/profile_tg_text"
+            android:textColor="@color/textWhite"
+            android:textSize="16sp"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
