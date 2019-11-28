@@ -1,14 +1,14 @@
-package com.jyami.wiingwiing_black.ui.gallery;
+package com.jyami.wiingwiing_black.ui.optimizing_memory;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class OptimizingMemoryViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public OptimizingMemoryViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is gallery fragment");
     }
