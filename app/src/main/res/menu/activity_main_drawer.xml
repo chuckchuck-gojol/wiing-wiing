@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_check_connection"
+            android:title="@string/menu_check_connection" />
+        <item
+            android:id="@+id/nav_optimize_memory"
+            android:title="@string/menu_optimize_memory" />
+        <item
+            android:id="@+id/nav_help"
+            android:title="@string/menu_help" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:title="@string/menu_about_us" />
+    </group>
+
+
+</menu>
