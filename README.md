@@ -1,5 +1,11 @@
 # wiing-wiing
 
+### 시현영상 링크
+
+척척고졸-위잉위잉 시현영상 UI 구현 : https://youtu.be/d-wYPHqA2jY
+
+척척고졸-위잉위잉 시현영상 UI 프로토타입 : https://youtu.be/NWSq5vIm4ZU
+
 ### Android TODO
 
 [model 만들기 전]
