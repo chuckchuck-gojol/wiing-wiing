@@ -1,5 +1,9 @@
 # wiing-wiing
 
+### 척척고졸 유튜브 채널
+
+https://www.youtube.com/channel/UC0XPgTuvDU4gQIw48YLGhcw/
+
 ### 시현영상 링크
 
 척척고졸-위잉위잉 시현영상 UI 구현 : https://youtu.be/d-wYPHqA2jY
