@@ -38,6 +38,7 @@ public class CheckingConnectionFragment extends Fragment {
             soundAroundText.setTextColor(R.color.textRed);
             return root;
         }
+
         connectionText.setText("이어폰이 연결되었습니다");
         connectionButton.setImageResource(R.drawable.connection_info);
         String name = "<font color=\"#f1c40f\">민정</font>";
