@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/theButton"
+        android:id="@+id/recordButton"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_help" />
 
     <Button
-        android:id="@+id/theButton2"
+        android:id="@+id/earphoneButton"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -50,5 +50,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theButton" />
+        app:layout_constraintTop_toBottomOf="@+id/recordButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

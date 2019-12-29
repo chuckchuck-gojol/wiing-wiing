@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.jyami.wiingwiing_black.EarphoneActivity;
 import com.jyami.wiingwiing_black.R;
 import com.jyami.wiingwiing_black.RecordActivity;
 
@@ -31,7 +32,15 @@ public class HelpFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_help, container, false);
 
         intent = new Intent(getActivity(), RecordActivity.class);
-        button = (Button) root.findViewById(R.id.theButton);
+        button = (Button) root.findViewById(R.id.recordButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
+
+        intent = new Intent(getActivity(), EarphoneActivity.class);
+        button = (Button) root.findViewById(R.id.earphoneButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(intent);

@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -18,7 +19,21 @@ public class EarphoneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_earphone);
+
+        Button registerButton = (Button) findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                register(v);
+            }
+        });
+
+        Button launchButton = (Button) findViewById(R.id.launchButton);
+        launchButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                musicLaunch(v);
+            }
+        });
     }
 
     public void register(View view){
@@ -27,7 +42,7 @@ public class EarphoneActivity extends AppCompatActivity {
         intentFilter.addAction(Intent.ACTION_HEADSET_PLUG);
         registerReceiver(bR, intentFilter);
         Toast.makeText(this, "Receiver Registered", Toast.LENGTH_SHORT).show();
-        SeekBar seekBar=(SeekBar)findViewById(R.id.seekBar1);
+        SeekBar seekBar=(SeekBar)findViewById(R.id.seekBar);
         seekValue=seekBar.getProgress();
     }
 
