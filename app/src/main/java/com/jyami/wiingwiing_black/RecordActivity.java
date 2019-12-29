@@ -1,6 +1,9 @@
 package com.jyami.wiingwiing_black;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -10,6 +13,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -26,6 +30,9 @@ public class RecordActivity extends AppCompatActivity {
 
     MediaPlayer player;
     int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
+
+    static int seekValue;
+    BroadcastReceiver bR=null;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override

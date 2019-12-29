@@ -29,7 +29,9 @@
         <activity
             android:name=".RecordActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
+        <activity
+            android:name=".EarphoneActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
