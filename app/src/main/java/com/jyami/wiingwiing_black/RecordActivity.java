@@ -2,8 +2,6 @@ package com.jyami.wiingwiing_black;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -12,8 +10,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -38,7 +34,7 @@ public class RecordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.record_test);
+        setContentView(R.layout.activity_record);
 
         permissionCheck();
 
@@ -97,7 +93,7 @@ public class RecordActivity extends AppCompatActivity {
          * 프레임 : 한 순간의 음성이 들어오면, 음성을 바이트 단위로 전부 저장하는 것
          * 초당 15프레임 이라면 보통 8K(8000바이트) 정도가 한순간에 저장됨
          * 따라서 용량이 크므로, 압축할 필요가 있음 */
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC); // 어디에서 음성 데이터를 받을 것인지
+        recorder.setAudioSource(MediaRecorder.AudioSource.REMOTE_SUBMIX); // 어디에서 음성 데이터를 받을 것인지
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP); // 압축 형식 설정
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
 
@@ -178,17 +174,19 @@ public class RecordActivity extends AppCompatActivity {
         ) {
             Log.d("RecordActivity", "permission 요청!");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                    Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAPTURE_AUDIO_OUTPUT}, 1);
         }
 
 
         int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int recordPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
         int readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        int capturePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAPTURE_AUDIO_OUTPUT);
 
         Log.d("RecordActivity", "writePermission" + writePermission);
         Log.d("RecordActivity", "recordPermission" + recordPermission);
         Log.d("RecordActivity", "readPermission" + readPermission);
+        Log.d("RecordActivity", "capturePermission" + capturePermission);
     }
 
 }
