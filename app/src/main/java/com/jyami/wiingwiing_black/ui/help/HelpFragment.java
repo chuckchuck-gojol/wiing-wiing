@@ -21,8 +21,6 @@ import com.jyami.wiingwiing_black.RecordActivity;
 public class HelpFragment extends Fragment {
 
     private HelpViewModel helpViewModel;
-    Intent intent;
-    public Button button = null;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,19 +29,15 @@ public class HelpFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_help, container, false);
 
-        intent = new Intent(getActivity(), RecordActivity.class);
-        button = (Button) root.findViewById(R.id.recordButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        root.findViewById(R.id.recordButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(intent);
+                startActivity(new Intent(getActivity(), RecordActivity.class));
             }
         });
 
-        intent = new Intent(getActivity(), EarphoneActivity.class);
-        button = (Button) root.findViewById(R.id.earphoneButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        root.findViewById(R.id.earphoneButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(intent);
+                startActivity(new Intent(getActivity(), EarphoneActivity.class));
             }
         });
 
