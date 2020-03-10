@@ -93,7 +93,7 @@ public class RecordActivity extends AppCompatActivity {
          * 프레임 : 한 순간의 음성이 들어오면, 음성을 바이트 단위로 전부 저장하는 것
          * 초당 15프레임 이라면 보통 8K(8000바이트) 정도가 한순간에 저장됨
          * 따라서 용량이 크므로, 압축할 필요가 있음 */
-        recorder.setAudioSource(MediaRecorder.AudioSource.REMOTE_SUBMIX); // 어디에서 음성 데이터를 받을 것인지
+        recorder.setAudioSource(MediaRecorder.AudioSource.REMOTE_SUBMIX); // 어디에서 음성 데이터를 받을 것인지 (remote_submix == 헤드셋)
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP); // 압축 형식 설정
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
 

@@ -59,7 +59,6 @@ public class EarphoneActivity extends AppCompatActivity {
 //        }
 
         //To launch the default music player app on any phone.
-
         if(Build.VERSION.SDK_INT>=15) {
             try {
                 Intent intent = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_MUSIC);
