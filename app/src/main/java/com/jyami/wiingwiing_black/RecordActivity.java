@@ -1,192 +1,202 @@
 package com.jyami.wiingwiing_black;
 
 import android.Manifest;
-import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+//import android.provider.MediaStore;
 
-import androidx.annotation.RequiresApi;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+
 
 public class RecordActivity extends AppCompatActivity {
-    MediaRecorder recorder;
-    String filename;
 
-    MediaPlayer player;
-    int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
+    private static final String LOG_TAG = "AudioRecordTest";
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+    private static String fileName = null;
+    private static String filePath = null;
 
-    static int seekValue;
-    BroadcastReceiver bR=null;
+    private RecordButton recordButton = null;
+    private MediaRecorder recorder = null;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private PlayButton playButton = null;
+    private MediaPlayer player = null;
+
+    // Requesting permission to RECORD_AUDIO
+    private boolean permissionToRecordAccepted = false;
+    private String[] permissions = {Manifest.permission.RECORD_AUDIO};
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_RECORD_AUDIO_PERMISSION:
+                permissionToRecordAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+        }
+        if (!permissionToRecordAccepted) finish();
 
-        permissionCheck();
-
-        File sdcard = Environment.getExternalStorageDirectory();
-        File file = new File(sdcard, "recorded.mp4");
-        filename = file.getAbsolutePath();
-        Log.d("RecordActivity", "저장할 파일 명 : " + filename);
-
-        findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                playAudio();
-            }
-        });
-
-        findViewById(R.id.pause).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pauseAudio();
-            }
-        });
-
-        findViewById(R.id.restart).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resumeAudio();
-            }
-        });
-
-        findViewById(R.id.stop).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopAudio();
-            }
-        });
-
-        findViewById(R.id.record).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recordAudio();
-            }
-        });
-
-        findViewById(R.id.recordStop).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopRecording();
-            }
-        });
     }
 
-    private void recordAudio() {
+    private void onRecord(boolean start) {
+        if (start) {
+            startRecording();
+        } else {
+            stopRecording();
+        }
+    }
+
+    private void onPlay(boolean start) {
+        if (start) {
+            startPlaying();
+        } else {
+            stopPlaying();
+        }
+    }
+
+    private void startPlaying() {
+        player = new MediaPlayer();
+        try {
+            player.setDataSource(fileName);
+            player.prepare();
+            player.start();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+    }
+
+    private void stopPlaying() {
+        player.release();
+        player = null;
+    }
+
+    private void startRecording() {
         recorder = new MediaRecorder();
-
-        /* 그대로 저장하면 용량이 크다.
-         * 프레임 : 한 순간의 음성이 들어오면, 음성을 바이트 단위로 전부 저장하는 것
-         * 초당 15프레임 이라면 보통 8K(8000바이트) 정도가 한순간에 저장됨
-         * 따라서 용량이 크므로, 압축할 필요가 있음 */
-        recorder.setAudioSource(MediaRecorder.AudioSource.REMOTE_SUBMIX); // 어디에서 음성 데이터를 받을 것인지 (remote_submix == 헤드셋)
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP); // 압축 형식 설정
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-
-        recorder.setOutputFile(filename);
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFile(fileName);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
         try {
             recorder.prepare();
-            recorder.start();
-
-            Toast.makeText(this, "녹음 시작됨.", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, "prepare() failed");
         }
+
+        recorder.start();
     }
 
     private void stopRecording() {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+    }
+
+    class RecordButton extends AppCompatButton {
+        boolean mStartRecording = true;
+
+        OnClickListener clicker = new OnClickListener() {
+            public void onClick(View v) {
+                onRecord(mStartRecording);
+                if (mStartRecording) {
+                    setText("녹음 중지");
+                } else {
+                    setText("녹음 시작");
+                }
+                mStartRecording = !mStartRecording;
+            }
+        };
+
+        public RecordButton(Context ctx) {
+            super(ctx);
+            setText("녹음 시작");
+            setOnClickListener(clicker);
+        }
+    }
+
+    class PlayButton extends AppCompatButton {
+        boolean mStartPlaying = true;
+
+        OnClickListener clicker = new OnClickListener() {
+            public void onClick(View v) {
+                onPlay(mStartPlaying);
+                if (mStartPlaying) {
+                    setText("재생 중지");
+                } else {
+                    setText("재생 시작");
+                }
+                mStartPlaying = !mStartPlaying;
+            }
+        };
+
+        //여기 부분에 모델 심어서 버튼 누르면 모델 실행되는 방식으로..?
+        public PlayButton(Context ctx) {
+
+            super(ctx);
+            setText("재생 시작");
+            setOnClickListener(clicker);
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+//        내부 저장소에 저장해서 wav 파일로 저장
+//        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/WW");
+//
+//        if (!saveFile.exists()) {
+//            saveFile.mkdir();
+//        }
+//        filePath = saveFile.getAbsolutePath();
+//        fileName = filePath + "/audiorecordtest" + ".wav";
+
+
+//        // Record to the external cache directory for visibility
+        fileName = getExternalCacheDir().getAbsolutePath();
+        fileName += "/audiorecordtest.wav";
+
+        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+
+        LinearLayout ll = new LinearLayout(this);
+        recordButton = new RecordButton(this);
+        ll.addView(recordButton,
+                new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        0));
+        playButton = new PlayButton(this);
+        ll.addView(playButton,
+                new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        0));
+        setContentView(ll);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
         if (recorder != null) {
-            recorder.stop();
             recorder.release();
             recorder = null;
-            Toast.makeText(this, "녹음 중지됨.", Toast.LENGTH_SHORT).show();
         }
-    }
 
-    private void playAudio() {
-        try {
-            closePlayer();
-
-            player = new MediaPlayer();
-            player.setDataSource(filename);
-            player.prepare();
-            player.start();
-
-            Toast.makeText(this, "재생 시작됨.", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void pauseAudio() {
-        if (player != null) {
-            position = player.getCurrentPosition();
-            player.pause();
-
-            Toast.makeText(this, "일시정지됨.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void resumeAudio() {
-        if (player != null && !player.isPlaying()) {
-            player.seekTo(position);
-            player.start();
-
-            Toast.makeText(this, "재시작됨.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void stopAudio() {
-        if (player != null && player.isPlaying()) {
-            player.stop();
-
-            Toast.makeText(this, "중지됨.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void closePlayer() {
         if (player != null) {
             player.release();
             player = null;
         }
     }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void permissionCheck(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-        ) {
-            Log.d("RecordActivity", "permission 요청!");
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAPTURE_AUDIO_OUTPUT}, 1);
-        }
-
-
-        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int recordPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
-        int readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        int capturePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAPTURE_AUDIO_OUTPUT);
-
-        Log.d("RecordActivity", "writePermission" + writePermission);
-        Log.d("RecordActivity", "recordPermission" + recordPermission);
-        Log.d("RecordActivity", "readPermission" + readPermission);
-        Log.d("RecordActivity", "capturePermission" + capturePermission);
-    }
-
 }
