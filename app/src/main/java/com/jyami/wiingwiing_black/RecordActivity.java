@@ -146,6 +146,9 @@ public class RecordActivity extends AppCompatActivity {
 
             super(ctx);
             setText("재생 시작");
+
+
+
             setOnClickListener(clicker);
         }
     }
