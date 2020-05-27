@@ -3,7 +3,6 @@ package com.jyami.wiingwiing_black;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,14 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+//import android.media.MediaPlayer;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 
-import org.tensorflow.lite.Interpreter;
-
 import java.io.*;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 
 public class RecordActivity extends AppCompatActivity {
@@ -31,10 +32,8 @@ public class RecordActivity extends AppCompatActivity {
     private RecordButton recordButton = null;
     private MediaRecorder recorder = null;
 
-    private PlayButton playButton = null;
-    private MediaPlayer player = null;
-
-    private Interpreter tfLite;
+//    private PlayButton playButton = null;
+//    private MediaPlayer player = null;
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -60,29 +59,29 @@ public class RecordActivity extends AppCompatActivity {
         }
     }
 
-    private void onPlay(boolean start) {
-        if (start) {
-            startPlaying();
-        } else {
-            stopPlaying();
-        }
-    }
+//    private void onPlay(boolean start) {
+//        if (start) {
+//            startPlaying();
+//        } else {
+//            stopPlaying();
+//        }
+//    }
 
-    private void startPlaying() {
-        player = new MediaPlayer();
-        try {
-            player.setDataSource(fileName);
-            player.prepare();
-            player.start();
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "prepare() failed");
-        }
-    }
-
-    private void stopPlaying() {
-        player.release();
-        player = null;
-    }
+//    private void startPlaying() {
+//        player = new MediaPlayer();
+//        try {
+//            player.setDataSource(fileName);
+//            player.prepare();
+//            player.start();
+//        } catch (IOException e) {
+//            Log.e(LOG_TAG, "prepare() failed");
+//        }
+//    }
+//
+//    private void stopPlaying() {
+//        player.release();
+//        player = null;
+//    }
 
     private void startRecording() {
         recorder = new MediaRecorder();
@@ -98,6 +97,14 @@ public class RecordActivity extends AppCompatActivity {
         }
 
         recorder.start();
+
+        try {
+            TimeUnit.SECONDS.sleep(4);
+        } catch (InterruptedException e) {
+            e.getStackTrace();
+        }
+
+        onRecord(false);
     }
 
     private void stopRecording() {
@@ -128,53 +135,40 @@ public class RecordActivity extends AppCompatActivity {
         }
     }
 
-    class PlayButton extends AppCompatButton {
-        boolean mStartPlaying = true;
-
-        OnClickListener clicker = new OnClickListener() {
-            public void onClick(View v) {
-                onPlay(mStartPlaying);
-                if (mStartPlaying) {
-                    setText("재생 중지");
-                } else {
-                    setText("재생 시작");
-                }
-                mStartPlaying = !mStartPlaying;
-            }
-        };
-
-        //여기 부분에 모델 심어서 버튼 누르면 모델 실행되는 방식으로..?
-        public PlayButton(Context ctx) {
-
-            super(ctx);
-            setText("재생 시작");
-
-
-
-            setOnClickListener(clicker);
-        }
-    }
+//    class PlayButton extends AppCompatButton {
+//        boolean mStartPlaying = true;
+//
+//        OnClickListener clicker = new OnClickListener() {
+//            public void onClick(View v) {
+//                onPlay(mStartPlaying);
+//                if (mStartPlaying) {
+//                    setText("재생 중지");
+//                } else {
+//                    setText("재생 시작");
+//                }
+//                mStartPlaying = !mStartPlaying;
+//            }
+//        };
+//
+//        public PlayButton(Context ctx) {
+//
+//            super(ctx);
+//            setText("재생 시작");
+//            setOnClickListener(clicker);
+//        }
+//    }
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-
-//        내부 저장소에 저장해서 wav 파일로 저장
-//        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/WW");
-//
-//        if (!saveFile.exists()) {
-//            saveFile.mkdir();
-//        }
-//        filePath = saveFile.getAbsolutePath();
-//        fileName = filePath + "/audiorecordtest" + ".wav";
-
-
-//        // Record to the external cache directory for visibility
-        fileName = getExternalCacheDir().getAbsolutePath();
-        fileName += "/audiorecordtest.wav";
-
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+
+
+        Date now = new Date();
+        fileName = getExternalCacheDir().getAbsolutePath();
+        fileName += now.toString() + ".wav";
+
 
         LinearLayout ll = new LinearLayout(this);
         recordButton = new RecordButton(this);
@@ -183,13 +177,14 @@ public class RecordActivity extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         0));
-        playButton = new PlayButton(this);
-        ll.addView(playButton,
-                new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        0));
-        setContentView(ll);
+
+//        playButton = new PlayButton(this);
+//        ll.addView(playButton,
+//                new LinearLayout.LayoutParams(
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        0));
+//        setContentView(ll);
     }
 
     @Override
@@ -200,9 +195,9 @@ public class RecordActivity extends AppCompatActivity {
             recorder = null;
         }
 
-        if (player != null) {
-            player.release();
-            player = null;
-        }
+//        if (player != null) {
+//            player.release();
+//            player = null;
+//        }
     }
 }
