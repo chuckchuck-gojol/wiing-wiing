@@ -2,8 +2,13 @@ import numpy as np
 import pandas as pd
 import glob
 import joblib
+import librosa #import 추가
 
+# 피처 함수가 적절하게 수행이 안되는 경우에는 'error : fn'(fn 은 파일 이름) 출력됨
+# error 뜨는 경우, 모든 오디오 신호가 default 값인 0으로 입력됨
+# 이때, 사이렌 data에 다른 카테고리 data에 비해 피처처리결과 0에 가까운 피처값들이 많아서 '사이렌'으로 연산결과 출력됨
 
+# 파이썬에서 지원하는 모든 음성처리 기술 적용했음 -> 피처 193개
 def extract_feature(file_name):
     X, sample_rate = librosa.load(file_name)
     stft = np.abs(librosa.stft(X))
