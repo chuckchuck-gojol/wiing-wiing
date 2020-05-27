@@ -160,9 +160,6 @@ public class RecordActivity extends AppCompatActivity {
         super.onCreate(icicle);
 
 
-
-        tfLite.runForMultipleInputsOutputs();
-
 //        내부 저장소에 저장해서 wav 파일로 저장
 //        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/WW");
 //
