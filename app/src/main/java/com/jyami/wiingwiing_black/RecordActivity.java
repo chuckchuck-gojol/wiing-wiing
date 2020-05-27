@@ -6,17 +6,17 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-//import android.provider.MediaStore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
+
+import org.tensorflow.lite.Interpreter;
 
 import java.io.*;
 
@@ -33,6 +33,8 @@ public class RecordActivity extends AppCompatActivity {
 
     private PlayButton playButton = null;
     private MediaPlayer player = null;
+
+    private Interpreter tfLite;
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -146,6 +148,9 @@ public class RecordActivity extends AppCompatActivity {
 
             super(ctx);
             setText("재생 시작");
+
+
+
             setOnClickListener(clicker);
         }
     }
@@ -153,6 +158,10 @@ public class RecordActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+
+
+        tfLite.runForMultipleInputsOutputs();
 
 //        내부 저장소에 저장해서 wav 파일로 저장
 //        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/WW");
