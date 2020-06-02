@@ -1,0 +1,10 @@
+# Function dependencies, for example:
+# package>=version
+xmltodict==0.12.0
+librosa==0.7.2
+numpy==1.18.1
+pandas==1.0.3
+joblib==0.15.1
+numba==0.48.0
+tensorflow==1.14
+keras==2.2.5
