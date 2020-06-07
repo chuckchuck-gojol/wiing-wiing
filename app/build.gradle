@@ -7,6 +7,7 @@ android {
         applicationId "com.jyami.wiingwiing_black"
         minSdkVersion 15
         targetSdkVersion 29
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -16,6 +17,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    // Specify tflite file should not be compressed for the app apk
+    aaptOptions {
+        noCompress "tflite"
     }
 }
 
@@ -32,4 +37,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    // Import tflite dependencies
+    implementation 'org.tensorflow:tensorflow-lite:2.2.0'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // https://mvnrepository.com/artifact/org.python/jython
+    compile group: 'org.python', name: 'jython', version: '2.7.0'
+
+
 }
