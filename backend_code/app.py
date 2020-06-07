@@ -55,8 +55,8 @@ def parse_multipart(request):
         print(pred)
         print_ans(ans)
 
-        # print('remove filename: %s' % f.filename)
-        # os.remove(get_file_path(f.filename))
+        print('remove filename: %s' % f.filename)
+        os.remove(get_file_path(f.filename))
     else:
         return "invalid fileName"
 
