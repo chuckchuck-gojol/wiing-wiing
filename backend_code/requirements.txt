@@ -70,7 +70,6 @@ pymongo==3.10.1
 pyOpenSSL==19.1.0
 PySocks==1.7.1
 python-dateutil==2.8.1
-python-markdown-slack==1.0.6
 pytz==2019.3
 PyYAML==5.3
 queuelib==1.5.0
