@@ -14,12 +14,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.jyami.wiingwiing_black.ui.Utils;
 
-import org.python.util.PythonInterpreter;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -47,13 +41,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-//        System.setProperty("python.cachedir.skip", "true");
-        PythonInterpreter.initialize(System.getProperties(), System.getProperties(), new String[0]);
-        PythonInterpreter interpreter = new PythonInterpreter();
-        interpreter.exec("print('hello')");
-
-
-//        tfLite.runForMultipleInputsOutputs();
     }
 
     @Override
