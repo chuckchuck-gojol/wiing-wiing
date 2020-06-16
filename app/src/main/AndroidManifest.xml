@@ -39,7 +39,6 @@
         <activity
             android:name=".RecordActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-<<<<<<< HEAD
 
     </application>
 
