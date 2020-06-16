@@ -1,4 +1,5 @@
 import librosa
+import json
 import numpy as np
 import pandas as pd
 import glob
@@ -51,16 +52,15 @@ def parse_multipart(request):
         pred = model.predict_proba(X_test)
         print(pred)
         ans = float(pred)
-
         print(pred)
-        print_ans(ans)
-
+        ans = get_ans(ans)
+        print(ans)
         print('remove filename: %s' % f.filename)
         os.remove(get_file_path(f.filename))
+        return ans
     else:
-        return "invalid fileName"
-
-    return "Done!"
+        answer = {"answer":500, "message":"invalid fileName"}
+        return json.dumps(answer, ensure_ascii=False)
 
 def parse_audio_files(filenames):
     rows = len(filenames)
@@ -90,20 +90,25 @@ def extract_feature(file_name):
     tonnetz = np.mean(librosa.feature.tonnetz(y=librosa.effects.harmonic(X), sr=sample_rate).T,axis=0)
     return mfccs,chroma,mel,contrast,tonnetz
 
-def print_ans(ans):
+def get_ans(ans):
+    answer = {}
     ans = round(ans)
+    answer['answer'] = ans
+    message = ''
+    
     #기능 1
     if(ans==0):
-        print("사이렌")
+        message = "사이렌"
     # 기능 2
     if(ans==1):
-        print("차량 엔진 소리_접근중")
+        message = "차량 엔진 소리_접근중"
     if(ans==2):
-        print("차량 경적 소리_위험")
+        message = "차량 경적 소리_위험"
     # 기능 3 -> 모델 2 반환
     if(ans==3):
-        print("지하철 트리거")
-
+        message = "지하철 트리거"
+    answer['message'] = message
+    return json.dumps(answer, ensure_ascii=False)
 
 
 @app.route('/', methods=['POST'])
