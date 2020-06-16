@@ -50,6 +50,8 @@ https://www.youtube.com/channel/UC0XPgTuvDU4gQIw48YLGhcw/
 
 ### 프로젝트 레포지토리 정리
 
+https://github.com/chuckchuck-gojol/model1_fin : 모델 생성
+
 https://github.com/chuckchuck-gojol/wiing-wiing : 척척고졸 Dev repository
 
 https://github.com/chuckchuck-gojol/mjungWorkSpace : 음성인식 공부를 위한 repository
