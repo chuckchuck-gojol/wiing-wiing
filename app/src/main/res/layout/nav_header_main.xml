@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/sidebar_header"
     android:layout_width="match_parent"
-    android:layout_height="260dp"
-    android:background="@color/backGroundGrey"
-    android:gravity="bottom"
+    android:layout_height="350dp"
+    android:background="@android:color/white"
+    android:gravity="center"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_vertical_margin"
     android:paddingTop="40dp"
@@ -21,12 +21,12 @@
         app:srcCompat="@drawable/audio_wave" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/connectionInfo"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
         android:text="@string/app_name_kor"
-        android:textColor="@color/sideBar"
+        android:textColor="@color/sideBarPurple"
         android:textSize="20sp"
         android:textStyle="bold" />
 </LinearLayout>

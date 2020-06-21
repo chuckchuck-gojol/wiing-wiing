@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBlack">
+    android:background="@color/mainBackground">
 
     <TextView
         android:id="@+id/text_help"
@@ -15,9 +15,9 @@
         android:layout_marginEnd="8dp"
         android:text="@string/help_text"
         android:padding = "30dp"
-        android:background="@color/subBlack"
+        android:background="@color/mainBackground"
         android:textAlignment="center"
-        android:textColor="@color/textWhite"
+        android:textColor="@color/textBlack"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

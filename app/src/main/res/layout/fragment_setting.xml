@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBlack">
+    android:background="@color/mainBackground">
 
     <TextView
         android:id="@+id/text_optimize_memory"
@@ -12,11 +12,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/menu_optimize_memory"
+        android:text="@string/menu_setting"
         android:padding = "30dp"
-        android:background="@color/subBlack"
+        android:background="@color/mainBackground"
         android:textAlignment="center"
-        android:textColor="@color/textWhite"
+        android:textColor="@color/textBlack"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

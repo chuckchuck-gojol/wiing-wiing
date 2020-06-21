@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_check_connection">
+    app:startDestination="@+id/nav_connection">
 
     <fragment
-        android:id="@+id/nav_check_connection"
+        android:id="@+id/nav_connection"
         android:name="com.jyami.wiingwiing_black.ui.checking_connection.CheckingConnectionFragment"
-        android:label="@string/menu_check_connection"
-        tools:layout="@layout/fragment_check_connection" />
+        android:label="@string/menu_connection"
+        tools:layout="@layout/fragment_connection" />
 
     <fragment
-        android:id="@+id/nav_optimize_memory"
-        android:name="com.jyami.wiingwiing_black.ui.optimizing_memory.OptimizingMemoryFragment"
-        android:label="@string/menu_optimize_memory"
-        tools:layout="@layout/fragment_optimize_memory" />
+        android:id="@+id/nav_setting"
+        android:name="com.jyami.wiingwiing_black.ui.optimizing_memory.SettingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_setting" />
 
     <fragment
         android:id="@+id/nav_help"
         android:name="com.jyami.wiingwiing_black.ui.help.HelpFragment"
         android:label="@string/menu_help"
-        tools:layout="@layout/fragment_help" />
+        tools:layout="@layout/fragment_qna" />
 
     <fragment
-        android:id="@+id/nav_about_us"
-        android:name="com.jyami.wiingwiing_black.ui.about_us.AboutUsFragment"
-        android:label="@string/menu_about_us"
-        tools:layout="@layout/fragment_about_us" />
+        android:id="@+id/nav_QnA"
+        android:name="com.jyami.wiingwiing_black.ui.about_us.QnAFragment"
+        android:label="@string/menu_QnA"
+        tools:layout="@layout/fragment_help" />
 </navigation>
