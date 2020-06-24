@@ -22,9 +22,6 @@
     <string name="not_connect_image">not connect image</string>
     <string name="timeline_text">당신의 하루 속 주변 소리를 확인하세요</string>
     <string name="timeline_state">타임라인</string>
-    <string name="profile_mj">컴퓨터공학과 17학번 김민정</string>
-    <string name="profile_jh_text">컴퓨터공학과 17학번 권지현</string>
-    <string name="profile_tg_text">컴퓨터공학과 17학번 노태경</string>
     <string name="help_text">도움말</string>
     <string name="tab1">주변소리</string>
     <string name="tab2">타임라인</string>

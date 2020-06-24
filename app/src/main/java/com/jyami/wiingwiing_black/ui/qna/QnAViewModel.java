@@ -1,4 +1,4 @@
-package com.jyami.wiingwiing_black.ui.about_us;
+package com.jyami.wiingwiing_black.ui.qna;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/mainBackground">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/border"
+            android:padding="16dp"
+            android:text="개발자 정보"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_margin="20dp"
+            android:contentDescription="@string/audio_wave"
+            app:srcCompat="@drawable/audio_wave" />
+
+        <TextView
+            android:id="@+id/connectionInfo2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="척척고졸"
+            android:textColor="@color/textBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2020-1 이화여자대학교 컴퓨터공학과 졸업프로젝트" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="이화여자대학교 컴퓨터공학전공 \n17학번 노태경 김민정 권지현"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_web"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:background="@color/sideBarPurple"
+                android:clickable="true"
+                android:cursorVisible="true"
+                android:gravity="center"
+                android:linksClickable="true"
+
+                android:onClick="goToWeb"
+                android:text="웹사이트 바로가기"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_setting"
-        android:name="com.jyami.wiingwiing_black.ui.optimizing_memory.SettingFragment"
+        android:name="com.jyami.wiingwiing_black.ui.setting.SettingFragment"
         android:label="@string/menu_setting"
         tools:layout="@layout/fragment_setting" />
 
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/nav_QnA"
-        android:name="com.jyami.wiingwiing_black.ui.about_us.QnAFragment"
+        android:name="com.jyami.wiingwiing_black.ui.qna.QnAFragment"
         android:label="@string/menu_QnA"
         tools:layout="@layout/fragment_help" />
 </navigation>

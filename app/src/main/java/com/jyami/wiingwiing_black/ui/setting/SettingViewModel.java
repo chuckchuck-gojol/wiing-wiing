@@ -1,4 +1,4 @@
-package com.jyami.wiingwiing_black.ui.optimizing_memory;
+package com.jyami.wiingwiing_black.ui.setting;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

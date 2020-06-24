@@ -1,4 +1,4 @@
-package com.jyami.wiingwiing_black.ui.optimizing_memory;
+package com.jyami.wiingwiing_black.ui.setting;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
