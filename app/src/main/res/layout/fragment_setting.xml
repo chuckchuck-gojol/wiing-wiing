@@ -313,19 +313,12 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textSize="12sp" />
 
-                <LinearLayout
+                <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:padding="20dp">
-
-                    <RadioButton
-                        android:id="@+id/radioButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:buttonTint="@color/sideBarPurple"
-                        android:text="둔감" />
+                    android:padding="10dp">
 
                     <RadioButton
                         android:id="@+id/radioButton3"
@@ -342,12 +335,23 @@
                         android:layout_weight="1"
                         android:buttonTint="@color/sideBarPurple"
                         android:text="예민" />
-                </LinearLayout>
+
+                    <RadioButton
+                        android:id="@+id/radioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/sideBarPurple"
+                        android:text="둔감" />
+
+                </RadioGroup>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <Button
