@@ -16,24 +16,35 @@ public class CheckingConnectionFragment extends Fragment {
 
     private CheckingConnectionViewModel checkingConnectionViewModel;
 
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        checkingConnectionViewModel =
-                ViewModelProviders.of(this).get(CheckingConnectionViewModel.class);
+        checkingConnectionViewModel = ViewModelProviders.of(this).get(CheckingConnectionViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_connection, container, false);
 
-//        root.findViewById(R.id.recordButton).setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(getActivity(), RecordActivity.class));
+//        TabLayout tabLayout =(TabLayout) root.findViewById(R.id.tab);
+//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                int pos = tab.getPosition() ;
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//                // TODO : tab의 상태가 선택되지 않음으로 변경.
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//                // TODO : 이미 선택된 tab이 다시
 //            }
 //        });
 
         return root;
     }
+
+
 
 
 }
