@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name_eng">wiingwiing</string>
     <string name="app_name_kor">위잉위잉</string>
+
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -8,21 +10,19 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_check_connection">이어폰 연결 확인</string>
-    <string name="menu_optimize_memory">메모리 최적화</string>
-    <string name="menu_help">위잉위잉 사용설명서</string>
-    <string name="menu_about_us">개발자 정보</string>
+    <string name="menu_connection">연결 해제</string>
+    <string name="menu_setting">기본 설정</string>
+    <string name="menu_help">사용 설명</string>
+    <string name="menu_QnA">문의 하기</string>
 
 
-    <string name="loading">Loading...</string>
     <string name="audio_wave">audio_wave_image</string>
     <string name="connection_yellow">연결</string>
     <string name="sound_around">주변소리</string>
     <string name="not_connect_image">not connect image</string>
     <string name="timeline_text">당신의 하루 속 주변 소리를 확인하세요</string>
     <string name="timeline_state">타임라인</string>
-    <string name="profile_mj">컴퓨터공학과 17학번 김민정</string>
-    <string name="profile_jh_text">컴퓨터공학과 17학번 권지현</string>
-    <string name="profile_tg_text">컴퓨터공학과 17학번 노태경</string>
     <string name="help_text">도움말</string>
+    <string name="tab1">주변소리</string>
+    <string name="tab2">타임라인</string>
 </resources>

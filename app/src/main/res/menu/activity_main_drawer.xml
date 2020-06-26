@@ -5,17 +5,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_check_connection"
-            android:title="@string/menu_check_connection" />
+            android:id="@+id/nav_connection"
+            android:title="@string/menu_connection" />
         <item
-            android:id="@+id/nav_optimize_memory"
-            android:title="@string/menu_optimize_memory" />
+            android:id="@+id/nav_setting"
+            android:title="@string/menu_setting" />
         <item
             android:id="@+id/nav_help"
             android:title="@string/menu_help" />
         <item
-            android:id="@+id/nav_about_us"
-            android:title="@string/menu_about_us" />
+            android:id="@+id/nav_QnA"
+            android:title="@string/menu_QnA" />
     </group>
 
 

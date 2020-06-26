@@ -24,11 +24,11 @@ public class HelpFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_help, container, false);
 
-        root.findViewById(R.id.recordButton).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), RecordActivity.class));
-            }
-        });
+//        root.findViewById(R.id.recordButton).setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), RecordActivity.class));
+//            }
+//        });
 
         return root;
     }

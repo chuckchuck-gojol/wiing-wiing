@@ -4,51 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBlack">
+    android:background="@color/mainBackground"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
 
-    <TextView
-        android:id="@+id/text_help"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/help_text"
-        android:padding = "30dp"
-        android:background="@color/subBlack"
-        android:textAlignment="center"
-        android:textColor="@color/textWhite"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        android:padding="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/recordButton"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:text="record_activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_help" />
+        <TextView
+            android:id="@+id/alert_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="주변소리 듣기"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/earphoneButton"
-        android:layout_width="88dp"
+        <TextView
+            android:id="@+id/alert_content1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="8sp"
+            android:text="사용자가 이어폰을 착용하였을 때 접속시 자동으로 실행\n이어폰의 외부 마이크를 사용하여 실시간으로 주변 소리 청취 "
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:text="earphone_ACTIVITY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        android:padding="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recordButton" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+        <TextView
+            android:id="@+id/alert_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="기본설정"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/alert_content2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="8sp"
+            android:text="중요소리 구분시 민감도 설정을 할 수 있음\n알림을 원하는 카테고리를 선택할 수 있음"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/alert_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="타임라인"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/alert_content3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="주변소리를 청취한 기록 조회 가능"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

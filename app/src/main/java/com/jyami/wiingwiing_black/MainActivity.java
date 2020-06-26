@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_check_connection, R.id.nav_optimize_memory, R.id.nav_help,
-                R.id.nav_about_us)
+                R.id.nav_connection, R.id.nav_setting, R.id.nav_help,
+                R.id.nav_QnA)
                 .setDrawerLayout(drawer)
                 .build();
 
